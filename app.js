@@ -1,50 +1,50 @@
-//var, let and const
+/*
+	PRIMITIVE DATA TYPES
+		- Stored directly in the location the variable accesses
+		- Stored on the stap
 
-// var name = 'Jane Doe';
-// console.log(name); //prints Jane Doe in the console
-//
-// name = 'Steve Smith';
-// console.log(name); //prints Steve Smith in the console
+	REFERENCE DATA TYPE
+		- Accessed by reference, so the objects are stored in memory heap, referenced by a pointer to a memory location
 
-// var names can only include letters, numbers, _, and $.
-// Can't begin with numbers
-var greeting;
-console.log(greeting); // "undefined"
-greeting = 'Hello';
-console.log(greeting);
+		Primitive Types:
+		String, Number (int, float), Boolean, Null, Undefined
+		ES6 introduced Symbols
 
-//Multi word vars
-var firstName = 'John'; //camel case tends to be preferred
-var first_name = 'Sara'; //snake case
-var FirstName = 'Tom'; //Pascal case - classes use this convention.
+		Reference types are objects:
+		Arrays, Object Literals, FUnctions, Dates, anything else you STORE...
 
-//LET works similarly to VAR
-let name = 'Jane Doe';
-console.log(name); //prints Jane Doe in the console
+		JS is Dynamically Typed, so the types are associated with VALUES, not variables. This means that the same variable can hold multiple types and we don't have to specify types when creating variables.
+*/
 
-name = 'Steve Smith';
-console.log(name); //prints Steve Smith in the console
+// Examples
+const name = 'John Doe';
+console.log(typeof name);
 
-//CONST, in this case, can't be changed after initialization
-// const name = 'Jason';
-// console.log('name');
+const age = 45;
+console.log(typeof age);
 
-//also have to assign a value for const AT initialization
-//const greeting; //this is invalid, missing declaration error
+const hasKids = false;
+console.log(typeof hasKids);
 
-const person = {
-	name: 'John',
-	age: 30
+const car = null;
+console.log(typeof car); //interestingly enough, this is an 'Object'. This is a bug that can be explained by the type tag for JS objects being 0 and null being represented by the null pointer 0x00, or 0, during the early days of JS. It is, of course, not an object. This is a bug.
+
+let test;
+console.log(typeof test);
+
+const sym = Symbol();
+console.log(typeof sym);
+
+// REFERENCE type examples
+const hobbies = ['movies', 'music']
+console.log(typeof hobbies);
+
+const address = {
+	city: 'Dallas',
+	state: 'TX'
 }
+console.log(typeof address);
 
-console.log(person);
-
-//you can, however, change the data INSIDE the const object.
-person.name = 'Sara';
-console.log(person);
-
-const numbers = [1, 2, 3, 4, 5];
-numbers.push(6);
-//number = [2, 3, 4, 5, 6]; //can't be done. Reassign not allowed.
-
-console.log(numbers);
+const today = new Date();
+console.log(today);
+console.log(typeof today);

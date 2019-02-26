@@ -1,24 +1,37 @@
-// MORE ON MOUSE EVENTS
-
-const clearBtn = document.querySelector('.clear-tasks');
-const card = document.querySelector('.card');
+// WORKING WITH FORMS
+const form = document.querySelector('form');
+const taskInput = document.getElementById('task');
 const heading = document.querySelector('h5');
+const select = document.querySelector('select');
 
-//clearBtn.addEventListener('click', runEvent);
-//clearBtn.addEventListener('dblclick', runEvent);
-// clearBtn.addEventListener('mousedown', runEvent); //click and hold
-//clearBtn.addEventListener('mouseup', runEvent);
+//clears out the form input
+taskInput.value = '';
 
-// card.addEventListener('mouseenter', runEvent); //when the mouse enters the element's bounds
-// card.addEventListener('mouseleave', runEvent);
-// card.addEventListener('mouseover', runEvent);
-// card.addEventListener('mouseout', runEvent);
+//form.addEventListener('submit', runEvent);
 
-card.addEventListener('mousemove', runEvent); //any movement, all movement, inside that element
+//taskInput.addEventListener('keydown', runEvent);
+//taskInput.addEventListener('keyup', runEvent);
+//taskInput.addEventListener('keypress', runEvent);
 
-// EVENT HANDLER FUNCTION
-function runEvent(e) {
+// task.addEventListener('focus', runEvent); // click inside of an input
+// task.addEventListener('blur', runEvent); //click outside of an input
+
+//task.addEventListener('cut', runEvent); //when you cut text from input
+//task.addEventListener('paste', runEvent);
+
+//task.addEventListener('input', runEvent); // generalized input event, catches ANY event that occurs with the input
+
+//change events are used with select elements
+select.addEventListener('change', runEvent);
+
+
+function runEvent(e){
+	//e.preventDefault();
+	//console.log(taskInput.value); //this will reflect what is being submitted
 	console.log(`EVENT TYPE: ${e.type}`);
-	heading.innerText = `X: ${e.offsetX}, Y: ${e.offsetY}`; //this shows our coordinates
-	document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`
+	console.log(e.target.value);
+
+	//e is the event, target is the element the event happens on, value is whatever is being added
+	//heading.innerText = e.target.value; //heading value becomes the typed value
+	//console.log(e.target.value)
 }

@@ -1,25 +1,51 @@
-//  CREATING elements
-const li = document.createElement('li');
+// REPLACING ELEMENTS
 
-// Add class or ID
-li.className = 'collection-item';
-li.id = `new-item`;
+// CREATE AN ELEMENT
+const newHeading = document.createElement('h2');
+newHeading.id = 'task-title';
+newHeading.appendChild(document.createTextNode('Task List'));
 
-// Add any attribute
-li.setAttribute('title', 'New Item');
+// Get the old heading
+const oldHeading = document.getElementById('task-title');
 
-// Create text node by appending it
-li.appendChild(document.createTextNode('Hello World'));
+// Get the parent, because we're replacing our old child with the new child, newHeading
+const cardAction = document.querySelector('.card-action');
+cardAction.replaceChild(newHeading, oldHeading);
 
-// Create the new link element
-const link = document.createElement('a');
-link.className = 'delete-item secondary-content'
-link.innerHTML = '<i class="fa fa-remove"</i>'
 
-// Append link to li
-li.appendChild(link);
+// REMOVING AN ELEMENTS
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
 
-// Attach it to ul as a child
-document.querySelector('ul.collection').appendChild(li);
+// Remove individual list item
+lis[0].remove();
 
-console.log(li);
+// Remove child element from parent
+list.removeChild(lis[3]);
+
+// CLASSES and ATTRIBUTES
+const firstLi = document.querySelector('li:first-child');
+const link = firstLi.children[0]; //gives us the link in our list item
+console.log(link);
+
+let val;
+
+//CLASSES
+val = link.className;
+val = link.classList; //DOM token list, similar to array
+val = link.classList[0];
+link.classList.add('test');
+
+link.classList.remove('test');
+val = link;
+
+//ATTRIUTES
+val = link.getAttribute('href');
+val = link.setAttribute('href', 'http://google.com');
+link.setAttribute('title', 'Google');
+val = link.hasAttribute('title');
+val = link.removeAttribute('href');
+
+val = link;
+
+console.log(val);

@@ -1,39 +1,51 @@
-// DOM SELECTORS allows us to directly access elements from the DOM
-// This also us to do much of the work previously handled by jQuery
+//MULTIPLE ELEMENT DOM SELECTORS
 
-// Single element selectors let you grab an element by class or id. Only stores one thing, so if you target a class, it'll only grab the first element that uses that class.
+// const items = document.getElementsByClassName('collection-item');
 
-// Multiple element selectors can be used to return HTML Collections comprising the full array of items that use an id or class
+// console.log(items); //gets us an HTML Collection
+// console.log(items[0]); //gives us the first list item
+// items[0].style.color = 'red';
+// items[3].textContent = 'Hello again!';
+//
+// const listItems = documents.querySelector('ul').getElementsByClassName('collection-item');
+// console.log(listItems);
 
-//document.getElementById();
-const taskTitle = document.getElementById('task-title');
-console.log(taskTitle); //shows the h5 in index.html
+// GET ELEMENTS BY TAG NAME
+// let lis = document.getElementsByTagName('li');
 
-//grab things from the element
-console.log(taskTitle.id);
-console.log(taskTitle.className);
+// console.log(lis); //gets us an HTML Collection
+// // console.log(items[0]); //gives us the first list item
+// console.log(lis[0]);
+// lis[0].style.color = 'red';
+// lis[3].textContent = 'Hello';
+//
+// //convert the HTML function into an array
+// lis = Array.from(lis);
+// lis.reverse();
+// lis.forEach(function(li, index){
+// 	console.log(li.className)
+// 	li.textContent = `${index}: 'Hello'`
+// });
+//
+// console.log(lis);
 
-//we can also change styling by targeting
-//anythign you can do in CSS, can be done via this method
-taskTitle.style.background = '#333';
-taskTitle.style.color = '#FFF';
-taskTitle.style.padding = '5px';
-//document.getElementById('task-title').style.display = 'none';
+//querySelectorAll returns a node list
+const items = document.querySelectorAll('ul.collection li.collection-item');
 
-//you can also change the content by changing the content or even the HTML
-taskTitle.textContent = 'Task List!';
-taskTitle.innerText = 'My Tasks';
-taskTitle.innerHTML = '<span style="color: orange">Task List</span>'
+//note that we don't need to convert
+items.forEach(function(item, index) {
+	item.textContent = `${index}: Goodbye`;
+});
 
-//document.querySelector();
-// takes any CSS selector
-console.log(document.querySelector('#task-title')); //by id
-console.log(document.querySelector('.card-title')); //by class
-console.log(document.querySelector('h5')); //the first h5 on the page
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+const liEven = document.querySelectorAll('li:nth-child(even)');
 
-document.querySelector('li').style.color = 'red';
-document.querySelector('ul li').style.color = 'blue'; //you can also nest elements, as in CSS
+liOdd.forEach(function(li, index){
+	li.style.background = '#333';
+});
 
-document.querySelector('li:last-child').style.color = 'red';
-document.querySelector('li:nth-child(3)').style.color = 'purple';
-document.querySelector('li:nth-child(4)').textContent = 'Changed with Query Selector!';
+for (let i=0; i<liEven.length; i++) {
+	liEven[i].style.background = '#F4F4F4';
+}
+
+console.log(items); //gives us a node list

@@ -1,35 +1,29 @@
-//DEFINING AN OBJECT LITERAL
-const person = {
-	firstName: 'Steve',
-	lastName: 'Wilitis',
-	age: 59,
-	email: 'steve@msn.com',
-	hobbies: ['music', 'sports'],
-	address: {
-		city: 'miami',
-		state: 'FL'
-	},
-	getBirthYear: function() {
-		return 2019 - this.age; //this pertains to the object itself
-	}
-}
+// WORKING WITH DATES
 
 let val;
-val = person.firstName; //or person[firstName]
-val = person.hobbies[1]; //sports
-val = person.address.state; //FL
-val = person.address['city']; //miami
-val = person.getBirthYear();
 
-console.log(val);
+const today = new Date(); //today's date, current time
+let birthday = new Date('9-10-1981 11:25:00');
+birthday = new Date('6-17-2015 12:08:57');
+birthday = new Date('9/10/1987');
 
-const people = [
-	{name: 'John', age: 30},
-	{name: 'Mike', age: 23},
-	{name: 'Barry', age: 17},
-	{name: 'Debra', age: 41}
-];
+//dates are 0 based
+val = today.getMonth(); //note how the val is 1 less than the calendar month
+val = today.getDate();
+val = today.getDay(); //0-7, beginning at Sunday
+val = today.getFullYear();
+val = today.getHours();
+val = today.getMinutes();
+val = today.getSeconds();
+val = today.getMilliseconds();
+val = today.getTime(); //gives us a current timestamp, the amount of time that has passed since the beginning of the Unix epoch
 
-for (var i=0; i < people.length; i++) {
-	console.log(people[i].name); //prints John, Mike, Barry, Debra
-}
+birthday.setMonth(3); //set to April
+birthday.setDate(12); //set to April 12
+birthday.setFullYear(1999); //set to Apri 12, 1999
+birthday.setHours(3);
+birthday.setMinutes(53);
+birthday.setSeconds(22);
+
+console.log(val); //Date is a reference type, object, but we could convert with .toString()
+console.log(birthday);

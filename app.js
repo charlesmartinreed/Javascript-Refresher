@@ -1,72 +1,58 @@
-//loops are used to run the same block of code, using different iterations each time
+// WORKING WITH THE DOM
 
-// GENERAL LOOPS
-// FOR LOOP - "use this when you know how many iterations you will need"
-// for(let i=0; i<10; i++) { //i = i+1
-//
-// 	if(i === 2) {
-// 		console.log(`${i} is my favorite number!`);
-// 		continue; //move on the the next statement, i=3
-// 	}
-//
-// 	if(i === 5){
-// 		console.log(`${i}!?! I'm outta here!`)
-// 		break; //terminates the loop
-// 	}
-// 	console.log(i); //logs 0-9
+// WINDOW OBJECT in the browser is the user environment.
+// Document object exists on the window as a property.
+// Methods like console.log or alert exists on the window
+
+// ALERT
+//window.alert('Hello world'); //usually see this as alert();
+
+// PROMPT
+//const input = prompt(); //provides text input
+//alert(input); //throws up an alert with the contents of our prompt call, i.e, what was typed
+
+// CONFIRM - provides a OK/CANCEL selection box to the user
+// if(confirm('Are you sure?')) {
+// 	console.log('YES');
+// } else {
+// 	console.log('NO');
 // }
 
-// WHILE LOOP - "use when you dont know how many iterations you will need"
-// let i = 0;
-// while(i < 10) {
-// 	console.log(`Number is: ${i}`);
-// 	i++; //make sure you increment your value IN THE LOOP. Otherwise, this code block will run infinitely.
-// }
+//PROPERTIES
 
-// DO WHILE - ALWAYS RUNS AT LEAST ONCE
-// let i = 100;
-// do {
-// 	console.log(`Number is: ${i}`);
-// 	i++;
-// }
-// while(i < 10);
+let val;
+//grab window height and width
+val = window.outerHeight;
+val = window.outerWidth; //from the edges
 
-//LOOPING THROUGH ARRAYS
-//basic for loops work, as do while and do-while loops
-// const cars = ['Ford', 'Chevy', 'Honda', 'BMW'];
-// for(let i=0; i <cars.length; i++) {
-// 	console.log(cars[i]);
-//}
+val = window.innerHeight;
+val = window.innerWidth; //includes the visible content like scroll bars, etc.
 
-//unique to arrays is a forEach - takes in an anonymous function
-//the function can take in three things: iterator, index or the entire array itself
-// cars.forEach(function(car, index, array){
-// 	console.log(`${index}: ${car}`); //car is capturing the value
-// 	console.log(array);
-// });
+val = window.scrollY; //scroll point location on the current window for the user
+val = window.scrollX; //these are useful for playing animations as a user scrolls
 
-//MAP is used to transform the contents of the array and return those changes as a new array
-// const users = [
-// 	{id:523, name:'John'},
-// 	{id:289, name:'Sara'},
-// 	{id:431, name:'Karen'},
-// 	{id:902, name: 'Steven'}
-// ];
-//
-// const ids = users.map(function(user){
-// 	return user.id;
-// });
-// console.log(ids);
+//location objects
+val = window.location; //gives things like the http protocol, origin address, port #, etc
+val = window.location.hostname;
+val = window.location.search; //shows the query string used to reach your page
 
-//FOR-IN LOOPS
-const user = {
-	firstName: 'John',
-	lastName: 'Doe',
-	age: 40
-}
 
-//key value pairs, x is the key
-//read this as for key in object, do something with the value. In this example, we're just logging it to the console.
-for(let x in user){
-	console.log(`${x}: ${user[x]}`);
-}
+//REDIRECT
+// window.location.href = "https://google.com" //sends you to google when reloading
+//window.location.reload(); //reloads the page, obviously
+
+//HISTORY OBJECT - gets browsing history
+//window.history.go(-1); //sends the browser back one page
+//val = window.history.length //reports the number of sites navigated to before current one
+
+// NAVIGATOR OBJECT - details on the browser itself
+//includes things like the geoLocation, userAgent, platform
+val = window.navigator;
+val = window.navigator.appName;
+val = window.navigator.appVersion;
+val = window.navigator.userAgent;
+val = window.navigator.platform;
+val = window.navigator.location;
+
+
+console.log(val);

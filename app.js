@@ -1,50 +1,45 @@
-/*
-	PRIMITIVE DATA TYPES
-		- Stored directly in the location the variable accesses
-		- Stored on the stap
+//CONVERTING VARIABLES BETWEEN TYPES
 
-	REFERENCE DATA TYPE
-		- Accessed by reference, so the objects are stored in memory heap, referenced by a pointer to a memory location
+let val;
 
-		Primitive Types:
-		String, Number (int, float), Boolean, Null, Undefined
-		ES6 introduced Symbols
+//NUMBER TO STRING
+val = String(555);
+val = String(4+4);
 
-		Reference types are objects:
-		Arrays, Object Literals, FUnctions, Dates, anything else you STORE...
+//BOOL to STRING
+val = String(true);
 
-		JS is Dynamically Typed, so the types are associated with VALUES, not variables. This means that the same variable can hold multiple types and we don't have to specify types when creating variables.
-*/
+//DATE to STRING
+val = String(new Date());
 
-// Examples
-const name = 'John Doe';
-console.log(typeof name);
+//ARRAY to STRING
+val = String([1, 2, 3, 4]);
 
-const age = 45;
-console.log(typeof age);
+//there's also a toString() method
+val = (5).toString();
 
-const hasKids = false;
-console.log(typeof hasKids);
+//STRING TO NUMBER
+val = Number('5');
 
-const car = null;
-console.log(typeof car); //interestingly enough, this is an 'Object'. This is a bug that can be explained by the type tag for JS objects being 0 and null being represented by the null pointer 0x00, or 0, during the early days of JS. It is, of course, not an object. This is a bug.
+//BOOL to NUMBER
+val = Number(true);
+val = Number(false);
+val = Number(null);
+val = Number('hello'); //NaN
 
-let test;
-console.log(typeof test);
+//there's also a parseInt method
+val = parseInt('100');
+val = parseFloat('100.30')
 
-const sym = Symbol();
-console.log(typeof sym);
 
-// REFERENCE type examples
-const hobbies = ['movies', 'music']
-console.log(typeof hobbies);
+//TYPE COEERCION is handled by Javascript interpreter
+const val1 = String(5);
+const val2 = 6;
+const sum = val1 + val2;
 
-const address = {
-	city: 'Dallas',
-	state: 'TX'
-}
-console.log(typeof address);
 
-const today = new Date();
-console.log(today);
-console.log(typeof today);
+//OUTPUT
+console.log(sum); //56
+console.log(typeof sum); //string
+//console.log(val.length); //undefined when a number
+//console.log(val.toFixed()); //only works on numbers, for defining decimal points

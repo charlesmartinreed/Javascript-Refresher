@@ -1,51 +1,41 @@
-// REPLACING ELEMENTS
+// We interact with our web page through event listeners
 
-// CREATE AN ELEMENT
-const newHeading = document.createElement('h2');
-newHeading.id = 'task-title';
-newHeading.appendChild(document.createTextNode('Task List'));
+// Adding an event listener to the 'clear task' button
+// addEventListener takes the event to listen for and the anonymous function that describes what should occur when that event is detected
 
-// Get the old heading
-const oldHeading = document.getElementById('task-title');
+document.querySelector('.clear-tasks').addEventListener('click', (e) => {
+	//e is the param name for the event object, we're using it to prevent the default behavior for this link, i.e,. stop it from redirecting
+	//e.preventDefault();
+})
 
-// Get the parent, because we're replacing our old child with the new child, newHeading
-const cardAction = document.querySelector('.card-action');
-cardAction.replaceChild(newHeading, oldHeading);
+// triggering named functions
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
 
+function onClick(e){
+	let val;
+	val = e; //has many different properties
 
-// REMOVING AN ELEMENTS
-const lis = document.querySelectorAll('li');
-const list = document.querySelector('ul');
+	//event target element
+	val = e.target; //this is the element that was clicked on
+	val = e.target.className;
+	val = e.target.classList;
+	// e.target.innerText = 'Hello';
 
-// Remove individual list item
-lis[0].remove();
+	//anything you can do with the DOM outside of an event can also be done INSIDE of an event.
 
-// Remove child element from parent
-list.removeChild(lis[3]);
+	//check the event type
+	val = e.type;
 
-// CLASSES and ATTRIBUTES
-const firstLi = document.querySelector('li:first-child');
-const link = firstLi.children[0]; //gives us the link in our list item
-console.log(link);
+	//get the timestamp
+	val = e.timeStamp;
 
-let val;
+	//get coords relative to the window
+	val = e.clientY; //from the top of the window to where the click was registered on the element.
+	val = e.clientX;
 
-//CLASSES
-val = link.className;
-val = link.classList; //DOM token list, similar to array
-val = link.classList[0];
-link.classList.add('test');
+	//get coords relative to element itself
+	val = e.offsetY;
+	val = e.offsetX;
 
-link.classList.remove('test');
-val = link;
-
-//ATTRIUTES
-val = link.getAttribute('href');
-val = link.setAttribute('href', 'http://google.com');
-link.setAttribute('title', 'Google');
-val = link.hasAttribute('title');
-val = link.removeAttribute('href');
-
-val = link;
-
-console.log(val);
+	console.log(val);
+}

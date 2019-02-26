@@ -1,58 +1,37 @@
-const firstName = 'William';
-const lastName = 'Bailey';
-const age = 59;
-const str = 'Hello there my name is Charles'
-const tags = 'web development,software engineering,developer for hire'
+//Template literals were added in ES6
+const name = 'John';
+const age = 30;
+const job = 'Web Developer';
+const city = 'Miami';
+let html;
 
-let val;
-val = firstName + lastName;
+//inserting data in html, the old way
+//this is demonstrably horrible
+// html = '<ul><li>Name: ' + name + '</li><li>Age: ' + age + ' </li><li>Job: ' + job + '</li><li>City: ' + city +' </li></ul>'
 
-//Concatenation
-val = firstName + ' ' + lastName;
+// html = '<ul>' +
+// 				'<li>Name: ' + name + '</li>' +
+// 				'<li>Age: ' + age + '</li>' +
+// 				'<li>Job: ' + job + '</li>' +
+// 				'<li>City: ' + city + '</li>' +
+// 				'</ul>';
 
-//Appending
-val = 'Charles ';
-val += 'Martin';
+function hello() {
+	return 'I don\'t know why you say goodbye, I say hello.';
+}
 
-val = 'Hello, my name is ' + firstName + ' and I am ' + age + '.';
+//NOW, with TEMPLATE LITERALS
+//note that things within the literal, ${}, can be evaluated
+html = `
+			<ul>
+				<li>Name: ${name}</li>
+				<li>Age: ${age}</li>
+				<li>Job: ${job}</li>
+				<li>City: ${city}</li>
+				<li>${2+2}</li>
+				<li>${hello()}</li>
+				<li>${ age >= 30 ? 'Over 30': 'Under 30'}</li>
+			</ul>
+`;
 
-//Escaping is done with the \ character
-val = 'That\'s awesome, I cant\'t wait.';
-
-// Length
-val = firstName.length;
-
-val = firstName.concat(' ', lastName);
-
-//Changing case
-val = firstName.toUpperCase();
-val = firstName.toLowerCase();
-
-//Strings are treated like arrays
-//Get last character
-// let lastLetter = firstName[firstName.length - 1];
-
-val = firstName.indexOf('l'); //returns index of first match, -1 if no match
-val = firstName.lastIndexOf('l');
-val = firstName.charAt('2');
-val = lastName.charAt(lastName.length - 1);
-
-//substring
-val = firstName.substring(0, 4); //wiil out of william
-
-//slice - can start from back and move forward
-val = firstName.slice(-3);
-
-//split - split string into array
-val = str.split(' ');
-val = tags.split(',');
-
-//replace
-val = str.replace('Charles', 'Derrick');
-
-//includes - returns true or false based upon whether or not the passed argument is in the string
-val = str.includes('Goodbye')
-
-console.log(val);
-// console.log(lastLetter);
-// console.log(typeof lastLetter); //string
+document.body.innerHTML = html;

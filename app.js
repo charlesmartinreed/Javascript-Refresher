@@ -1,29 +1,77 @@
-// WORKING WITH DATES
+//CONDITIONALS
 
-let val;
+const id = 100;
 
-const today = new Date(); //today's date, current time
-let birthday = new Date('9-10-1981 11:25:00');
-birthday = new Date('6-17-2015 12:08:57');
-birthday = new Date('9/10/1987');
+//EQUAL COMPARISON
+// if(id == 101) { // == means evaluate, = means assign
+// 	console.log('CORRECT');
+// } else {
+// 	console.log('INCORRECT');
+// }
+//
+// //NOT EQUAL TO
+// if(id != 101) {
+// 	console.log('CORRECT');
+// } else {
+// 	console.log('INCORRECT');
+// }
+//
+// // == doesn't check type, it just checks value
+// // === or, strict equality, checks value AND type
+// if(id === 100) { //since id is '100', this evaluates to incorrect
+// 	console.log('CORRECT');
+// } else {
+// 	console.log('INCORRECT');
+// }
+//
+// if(id !== 100) { //since id is '100', this evaluates to correct
+// 	console.log('CORRECT');
+// } else {
+// 	console.log('INCORRECT');
+// }
 
-//dates are 0 based
-val = today.getMonth(); //note how the val is 1 less than the calendar month
-val = today.getDate();
-val = today.getDay(); //0-7, beginning at Sunday
-val = today.getFullYear();
-val = today.getHours();
-val = today.getMinutes();
-val = today.getSeconds();
-val = today.getMilliseconds();
-val = today.getTime(); //gives us a current timestamp, the amount of time that has passed since the beginning of the Unix epoch
+//CHECKING FOR UNDEFINED
+// if(typeof id !== 'undefined'){
+// 	console.log(`The ID is ${id}`);
+// } else {
+// 	console.log('NO ID');
+// }
 
-birthday.setMonth(3); //set to April
-birthday.setDate(12); //set to April 12
-birthday.setFullYear(1999); //set to Apri 12, 1999
-birthday.setHours(3);
-birthday.setMinutes(53);
-birthday.setSeconds(22);
+// if(id >= 100) {
+// 	console.log('CORRECT');
+// } else {
+// 	console.log('INCORRECT');
+// }
 
-console.log(val); //Date is a reference type, object, but we could convert with .toString()
-console.log(birthday);
+// IF ELSE
+// const color = 'yellow';
+// if (color === 'red') {
+// 	console.log('color is red');
+// } else if (color === 'blue') {
+// 	console.log('color is blue');
+// } else {
+// 	console.log('color is not red or blue');
+// }
+
+// LOGICAL OPERATORS
+const name = 'Don';
+const age = 25;
+
+//&& = AND
+if (age > 0 && age < 12) {
+	console.log(`${name} is a child`);
+} else if (age >= 13 && age <= 19) {
+	console.log(`${name} is a teenager`);
+} else {
+	console.log(`${name} is an adult`);
+}
+
+// || = OR
+if (age < 16 || age > 66) {
+	console.log(`${name} is unable to run in the race`);
+} else {
+	console.log(`${name} is registered for the race`)
+}
+
+// TERNARY OPERATOR
+console.log(id === 100 ? 'Correct' : 'Incorrect');

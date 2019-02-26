@@ -1,51 +1,59 @@
-//MULTIPLE ELEMENT DOM SELECTORS
+let val;
 
-// const items = document.getElementsByClassName('collection-item');
+const list = document.querySelector('.collection');
+const listItem = document.querySelector('li.collection-item:first-child'); //first item
 
-// console.log(items); //gets us an HTML Collection
-// console.log(items[0]); //gives us the first list item
-// items[0].style.color = 'red';
-// items[3].textContent = 'Hello again!';
-//
-// const listItems = documents.querySelector('ul').getElementsByClassName('collection-item');
-// console.log(listItems);
+// looking a different properties attached to these so-called nodes
 
-// GET ELEMENTS BY TAG NAME
-// let lis = document.getElementsByTagName('li');
+//get the child nodes of the ul
+val = list.childNodes; //returns node list of all the child nodes, including text nodes
+//line breaks count as text nodes
 
-// console.log(lis); //gets us an HTML Collection
-// // console.log(items[0]); //gives us the first list item
-// console.log(lis[0]);
-// lis[0].style.color = 'red';
-// lis[3].textContent = 'Hello';
-//
-// //convert the HTML function into an array
-// lis = Array.from(lis);
-// lis.reverse();
-// lis.forEach(function(li, index){
-// 	console.log(li.className)
-// 	li.textContent = `${index}: 'Hello'`
-// });
-//
-// console.log(lis);
+// get the children element nodes -
+val = list.chiildren; // returns html collection, just the elements, no text nodes. Generally this is more frequently used that childNodes.
 
-//querySelectorAll returns a node list
-const items = document.querySelectorAll('ul.collection li.collection-item');
+val = list.childNodes[0];
+val = list.childNodes[0].nodeName; //#text
+val = list.childNodes[0].nodeType; //3 - Text node
 
-//note that we don't need to convert
-items.forEach(function(item, index) {
-	item.textContent = `${index}: Goodbye`;
-});
+// The numbers returned by nodeType pertain to what type of node they are
+// 1 - element
+// 2 - Attribute (deprecated)
+// 3 - Text node
+// 8 - Comment
+// 9 - Document itself
+// 10 - Doctype
 
-const liOdd = document.querySelectorAll('li:nth-child(odd)');
-const liEven = document.querySelectorAll('li:nth-child(even)');
+val = list.children;
+val = list.children[1].textContent = 'Hello';
 
-liOdd.forEach(function(li, index){
-	li.style.background = '#333';
-});
+// we can also get children of children
+val = list.children[3].children; //our list items have a link in them, which represents our delete button
+list.children[3].children[0].id = 'test-link'; //we can also manipuate children of children
+val = list.children[3].children[0];
 
-for (let i=0; i<liEven.length; i++) {
-	liEven[i].style.background = '#F4F4F4';
-}
 
-console.log(items); //gives us a node list
+// first child
+val = list.firstChild; //gives first node, element OR text
+val = list.firstElementChild; // gives first element node, not including text nodes
+
+// last child
+val = list.lastChild;
+val = list.lastElementChild;
+
+//get the child count for elements
+val = list.childElementCount;
+
+//get parent node or parents of parents
+val = listItem.parentNode;
+val = listItem.parentElement;
+val = listItem.parentElement.parentElement;
+
+// get next sibling
+val = listItem.nextSibling; //nodes, including text
+val = listItem.nextElementSibling.nextElementSibling; //nodes, excluding text
+
+val = listItem.previousSibling; //nodes, including text
+val = listItem.previousElementSibling.previousElementSibling; //nodes, excluding text
+
+console.log(val);

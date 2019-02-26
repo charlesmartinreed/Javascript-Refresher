@@ -1,63 +1,72 @@
-// FUNCTION DECLARATIONS
-// function greet(firstName, lastName) { //name is a type of parameter, or argument
-// 	//anything in here is the function scope
-// 	return `Hello, ${firstName} ${lastName}!`
+//loops are used to run the same block of code, using different iterations each time
+
+// GENERAL LOOPS
+// FOR LOOP - "use this when you know how many iterations you will need"
+// for(let i=0; i<10; i++) { //i = i+1
+//
+// 	if(i === 2) {
+// 		console.log(`${i} is my favorite number!`);
+// 		continue; //move on the the next statement, i=3
+// 	}
+//
+// 	if(i === 5){
+// 		console.log(`${i}!?! I'm outta here!`)
+// 		break; //terminates the loop
+// 	}
+// 	console.log(i); //logs 0-9
+// }
+
+// WHILE LOOP - "use when you dont know how many iterations you will need"
+// let i = 0;
+// while(i < 10) {
+// 	console.log(`Number is: ${i}`);
+// 	i++; //make sure you increment your value IN THE LOOP. Otherwise, this code block will run infinitely.
+// }
+
+// DO WHILE - ALWAYS RUNS AT LEAST ONCE
+// let i = 100;
+// do {
+// 	console.log(`Number is: ${i}`);
+// 	i++;
+// }
+// while(i < 10);
+
+//LOOPING THROUGH ARRAYS
+//basic for loops work, as do while and do-while loops
+// const cars = ['Ford', 'Chevy', 'Honda', 'BMW'];
+// for(let i=0; i <cars.length; i++) {
+// 	console.log(cars[i]);
 //}
 
-//call the function
-// console.log(greet('David', 'Lowe')); //without the passed in parameters, these values are "undefined"
+//unique to arrays is a forEach - takes in an anonymous function
+//the function can take in three things: iterator, index or the entire array itself
+// cars.forEach(function(car, index, array){
+// 	console.log(`${index}: ${car}`); //car is capturing the value
+// 	console.log(array);
+// });
 
-//handling default values, the 'old' way
-function oldGreet(firstName, lastName) {
-	if(typeof firstName === 'undefined'){firstName = 'John'}
-	if(typeof lastName === 'undefined'){lastName = 'Doe'}
+//MAP is used to transform the contents of the array and return those changes as a new array
+// const users = [
+// 	{id:523, name:'John'},
+// 	{id:289, name:'Sara'},
+// 	{id:431, name:'Karen'},
+// 	{id:902, name: 'Steven'}
+// ];
+//
+// const ids = users.map(function(user){
+// 	return user.id;
+// });
+// console.log(ids);
 
-	return `Hello, ${firstName} ${lastName}!`
-
+//FOR-IN LOOPS
+const user = {
+	firstName: 'John',
+	lastName: 'Doe',
+	age: 40
 }
 
-//handling default the modern way
-function greet(firstName = 'John', lastName = 'Doe') {
-	return `Hello, ${firstName} ${lastName}!`
+//key value pairs, x is the key
+//read this as for key in object, do something with the value. In this example, we're just logging it to the console.
+for(let x in user){
+	console.log(`${x}: ${user[x]}`);
 }
-
-//console.log(greet()); // returns Hello, John Doe
-//console.log(greet('David', 'Lowe'));
-
-//Function expressions = seting a function to a variable
-const square = function(x = 3) {
-	return x * x;
-};
-
-//console.log(square()); //returns 9, using the default value of 3
-console.log(square(8)); //64
-
-//IMMEDIATELY INVOKABLE FUNCTION EXPRESSIONS - IIFES
-//A function that is declared and run at the same time
-// (function() {
-// 	console.log('IIFE Ran...');
-// })()
-
-//this is used often in the module pattern, 'a bunch of IIFEs with private properties'
-// (function(name) {
-// 	console.log(`Hello, ${name}`);
-// })('Bradley');
-
-//remember that objects can contain functions - these are called methods
-const todo = {
-	add: function(){
-		console.log('Add todo...');
-	},
-	edit: function(id){
-		console.log(`Edit todo: ${id}`);
-	}
-}
-
-//functions, like other object properties, can also be defined outside of the declaration body of that object
-todo.delete = function() {
-	console.log('Delete todo...');
-}
-
-todo.add();
-todo.edit(13);
-todo.delete();

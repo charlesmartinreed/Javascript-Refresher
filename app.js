@@ -1,45 +1,24 @@
-//CONVERTING VARIABLES BETWEEN TYPES
-
+const num1 = 100;
+const num2 = 50;
 let val;
 
-//NUMBER TO STRING
-val = String(555);
-val = String(4+4);
+//Basic math
+val = num1 + num2;
+val = num1 - num2;
+val = num1 * num2;
+val = num1 / num2;
+val = num1 % num2;
 
-//BOOL to STRING
-val = String(true);
+//Using the Math object
+val = Math.PI;
+val = Math.round(2.8);
+val = Math.ceil(2.4); //round up
+val = Math.floor(2.9); //round down
+val = Math.abs(-15);
+val = Math.sqrt(64);
+val = Math.pow(8, 2);
+val = Math.min(2, 33, 4, 1, 12, 19, -5);
+val = Math.max(2, 33, 4, 1, 12, 19, -5);
+val = Math.floor(Math.random() * 3 + 1);
 
-//DATE to STRING
-val = String(new Date());
-
-//ARRAY to STRING
-val = String([1, 2, 3, 4]);
-
-//there's also a toString() method
-val = (5).toString();
-
-//STRING TO NUMBER
-val = Number('5');
-
-//BOOL to NUMBER
-val = Number(true);
-val = Number(false);
-val = Number(null);
-val = Number('hello'); //NaN
-
-//there's also a parseInt method
-val = parseInt('100');
-val = parseFloat('100.30')
-
-
-//TYPE COEERCION is handled by Javascript interpreter
-const val1 = String(5);
-const val2 = 6;
-const sum = val1 + val2;
-
-
-//OUTPUT
-console.log(sum); //56
-console.log(typeof sum); //string
-//console.log(val.length); //undefined when a number
-//console.log(val.toFixed()); //only works on numbers, for defining decimal points
+console.log(val);
